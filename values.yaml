@@ -3,17 +3,14 @@
 # Declare variables to be passed into your templates.
 appName: "frontend-app"
 replicaCount: 2
-
 image:
   repository: 682935334295.dkr.ecr.ap-northeast-2.amazonaws.com/oshyun_app_repo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
-
+  tag: "d5c38"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: false
@@ -24,36 +21,32 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   name: ""
-
 podAnnotations: {}
 podLabels: {}
-
 podSecurityContext: {}
-  # fsGroup: 2000
+# fsGroup: 2000
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+# capabilities:
+#   drop:
+#   - ALL
+# readOnlyRootFilesystem: true
+# runAsNonRoot: true
+# runAsUser: 1000
 
 service:
   type: ClusterIP
   port: 80
-
 ingress:
   enabled: false
   className: "alb"
-  annotations: 
+  annotations:
     alb.ingress.kubernetes.io/load-balancer-name: oshyun-alb
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     alb.ingress.kubernetes.io/healthcheck-path: /
-    alb.ingress.kubernetes.io/subnets: subnet-07f0e4699859f8d98, subnet-0dd1842a8653a7e12 
-  
+    alb.ingress.kubernetes.io/subnets: subnet-07f0e4699859f8d98, subnet-0dd1842a8653a7e12
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   # hosts:
@@ -63,20 +56,19 @@ ingress:
   #         pathType: ImplementationSpecific
   # tls: []
   ingressRule:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: frontend-service
-            port:
-              number: 80
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 80
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-
-resources: 
+resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
@@ -87,7 +79,6 @@ resources:
   requests:
     cpu: 100m
     memory: 128Mi
-
 livenessProbe:
   httpGet:
     path: /
@@ -96,17 +87,14 @@ readinessProbe:
   httpGet:
     path: /
     port: http
-
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
-
 maxSurge: 34%
 maxUnavailable: 0%
-
 # Additional volumes on the output Deployment definition.
 volumes: []
 # - name: foo
@@ -121,7 +109,5 @@ volumeMounts: []
 #   readOnly: true
 
 nodeSelector: {}
-
 tolerations: []
-
 affinity: {}
