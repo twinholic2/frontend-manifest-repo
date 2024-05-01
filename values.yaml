@@ -4,7 +4,7 @@
 appName: "frontend-app"
 replicaCount: 2
 image:
-  repository: 682935334295.dkr.ecr.ap-northeast-2.amazonaws.com/frontend_app_repo
+  repository: 682935334295.dkr.ecr.ap-northeast-2.amazonaws.com/frontend-app-repo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "d5c38"
