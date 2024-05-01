@@ -46,7 +46,7 @@ ingress:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     alb.ingress.kubernetes.io/healthcheck-path: /
-    alb.ingress.kubernetes.io/subnets: subnet-07f0e4699859f8d98, subnet-0dd1842a8653a7e12
+    alb.ingress.kubernetes.io/subnets: subnet-062e52daa231e98bf, subnet-07ea3baebab92ae2f
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   # hosts:
