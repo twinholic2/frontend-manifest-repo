@@ -42,12 +42,13 @@ ingress:
   enabled: false
   className: "alb"
   annotations:
-    alb.ingress.kubernetes.io/load-balancer-name: oshyun-alb
+    alb.ingress.kubernetes.io/load-balancer-name: frontend-alb
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     alb.ingress.kubernetes.io/healthcheck-path: /
-    alb.ingress.kubernetes.io/subnets: subnet-062e52daa231e98bf, subnet-07ea3baebab92ae2f
+    alb.ingress.kubernetes.io/security-group: sg-095b678e1460d5b80  # 보안 그룹 ID
+    alb.ingress.kubernetes.io/subnets: subnet-0c3e4869e9d7d1c17, subnet-0ecb325d0ea450edb
   ingressRule:
     - http:
         paths:
