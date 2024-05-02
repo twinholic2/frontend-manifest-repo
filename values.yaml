@@ -7,7 +7,7 @@ image:
   repository: 682935334295.dkr.ecr.ap-northeast-2.amazonaws.com/frontend-app-repo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "e469f"
+  tag: "ae7e8"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -47,7 +47,7 @@ ingress:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     alb.ingress.kubernetes.io/healthcheck-path: /
-    alb.ingress.kubernetes.io/security-group: sg-095b678e1460d5b80  # 보안 그룹 ID
+    alb.ingress.kubernetes.io/security-group: sg-095b678e1460d5b80 # 보안 그룹 ID
     alb.ingress.kubernetes.io/subnets: subnet-0c3e4869e9d7d1c17, subnet-0ecb325d0ea450edb
   ingressRule:
     - http:
